@@ -5,6 +5,7 @@ let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 let general = JSON.parse(fs.readFileSync("./general.json", "utf8"));
 const prefix = "!";
 var http = require('http');
+const token = process.env.token;
 
 
 client.on("ready", () => {
@@ -344,4 +345,4 @@ client.on("message", (message) => {
   
          );
 
-client.login(process.env.token);
+client.login(token);
