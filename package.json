@@ -1,31 +1,31 @@
 {
-  "name": "squadfambot",
+  "name": "TakeFlightBot",
   "version": "1.0.0",
-  "description": "bot for the fam",
-  "main": "squadfambot.js",
-  "dependencies": {
-    "discord.js": "^11.4.2"
-	"enmap": "^0.3.2",
-    "moment": "^2.18.1",
-    "moment-duration-format": "^1.3.0",
-    "express": "^4.16.0",
-    "assets": "^3.0.0"
+  "description": "Cool bot",
+  "main": "node squadfambot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node squadfambot.js"
   },
   "engines": {
     "node": "8.4.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ishirokun/squadfambot.git"
+    "type": "",
+    "url": ""
   },
   "author": "Ishiro",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ishirokun/squadfambot/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Ishirokun/squadfambot#readme"
+  "homepage": "",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "enmap": "^0.3.2",
+    "moment": "^2.18.1",
+    "moment-duration-format": "^1.3.0",
+    "express": "^4.16.0",
+    "assets": "^3.0.0"
+  }
 }
