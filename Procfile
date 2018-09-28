@@ -1,1 +1,1 @@
-worker: node squadfambot.js
+worker:	node squadfambot.js
