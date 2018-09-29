@@ -6,7 +6,7 @@ var http = require('http');
 const token = process.env.token;
 const pg = require('pg');
 const database = new pg.Pool({
-	connectionString: DATABASE_URL,
+	connectionString: process.env.DATABASE_URL,
 	ssl: true
 	});
 
