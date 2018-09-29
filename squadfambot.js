@@ -122,9 +122,9 @@ bot.on("message", (message) => {
 	
 	if (command === "award") {
 		var infos = {
-			"targetuser": args[0].replace(/<@|!|>/g,"")
-			"username": client.users.get(args[0].replace(/<@|!|>/g,"")).username
-			"amount": args[1]
+			targetuser: args[0].replace(/<@|!|>/g,"")
+			username: client.users.get(args[0].replace(/<@|!|>/g,"")).username
+			amount: args[1]
 		}
 		 pool.connect( (err, client, done) => {
             client.query('update users set count = count + $2 where id = $1',
