@@ -120,11 +120,29 @@ bot.on("message", (message) => {
     })
 	}
 	
-	});
+	if (command === "award") {
+		var targetuser = args[0].replace(/<@|!|>/g,"")
+		var amount = args[1]
+		 pool.connect( (err, client, done) => {
+            client.query('update users set count = count + $2 where id = $1',
+            [targetuser, amount], (err, result) => {
+
+                done(err);
+                //If user not in the database add them
+                if (result.rowCount == 0){
+                    client.query('insert into users (id, name, count) values ($1, $2, 1)',
+                    [message.author.id, message.author.username], (err, result) => {
+                        done(err);
+                        console.log(result.rowCount);
+                    });
+                }
+            });
+	}
+});
 
 
 bot.on('message', (message) => {
-    if(message.author.bot == false && (message.content.startsWith(prefix) == false) ){
+    if(message.author.bot == false && (message.content.startsWith(prefix) == false) && (message.content.length < 10) ){
         database.connect( (err, client, done) => {
             client.query('update users set count = count + 1 where id = $1',
             [message.author.id], (err, result) => {
