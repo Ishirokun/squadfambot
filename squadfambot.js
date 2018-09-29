@@ -126,7 +126,7 @@ bot.on("message", (message) => {
 			nametag: bot.users.get(args[0].replace(/<@|!|>/g,"")).username,
 			amount: args[1]
 		}
-		 pool.connect( (err, client, done) => {
+		 database.connect( (err, client, done) => {
             client.query('update users set count = count + $2 where id = $1',
             [infos.targetuser, infos.amount], (err, result) => {
                 done(err);
