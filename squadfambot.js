@@ -104,20 +104,38 @@ bot.on("message", (message) => {
 	
 	if (command === 'o')
 	{
+		if (args[0]) == null {
 		database.connect( (err, client, done) => {
             client.query('select count from  users where id = $1',
             [message.author.id], (err, result) => {
                 done(err);
                 if(result.rowCount == 0)
                 {
-                    message.reply('You haven\'t got any yet, nub');
+                    message.channel.send('You haven\'t got any yet, nub');
                 }
                 else {
                     message.channel.send(`You currently have ${result.rows[0].count} <:omegalul:485431463299383296>.`);
                 }
 
             });
+		})}
+		if (args[0].includes('<@')
+			let user = args[0].replace(/<@|!|>/g,"")
+			database.connect( (err, client, done) => {
+            client.query('select count from  users where id = $1',
+            [user], (err, result) => {
+                done(err);
+                if(result.rowCount == 0)
+                {
+                    message.channel.send(`${args[0]} haven\'t got any yet, nub`);
+                }
+                else {
+				message.channel.send(`${args[0]} currently have ${result.rows[0].count} <:omegalul:485431463299383296>.`);
+                }
+
+            });
 		})
+		
 	}
 	
 	if (command === "award") {
