@@ -114,7 +114,7 @@ bot.on("message", (message) => {
                     message.reply('You haven\'t got any yet, nub');
                 }
                 else {
-                    message.channel.send('You currently have ${result.rows[0].count} <:omegalul:485431463299383296>.');
+                    message.channel.send(`You currently have ${result.rows[0].count} <:omegalul:485431463299383296>.`);
                 }
 
             });
