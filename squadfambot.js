@@ -122,8 +122,8 @@ bot.on("message", (message) => {
 	
 	if (command === "award") {
 		var infos = {
-			targetuser: args[0].replace(/<@|!|>/g,"")
-			username: client.users.get(args[0].replace(/<@|!|>/g,"")).username
+			targetuser: args[0].replace(/<@|!|>/g,""),
+			nametag: client.users.get(args[0].replace(/<@|!|>/g,"")).username,
 			amount: args[1]
 		}
 		 pool.connect( (err, client, done) => {
@@ -132,7 +132,7 @@ bot.on("message", (message) => {
                 done(err);
                 if (result.rowCount == 0){
                     client.query('insert into users (id, name, count) values ($1, $2, $3)',
-                    [infos.tageruser, infos.username, infos.amount], (err, result) => {
+                    [infos.tageruser, infos.nametag, infos.amount], (err, result) => {
                         done(err);
                         console.log(result.rowCount);
                     });
