@@ -123,11 +123,11 @@ bot.on("message", (message) => {
 	if (command === "award") {
 		 pool.connect( (err, client, done) => {
             client.query('update users set count = count + $2 where id = $1',
-            [args[0].replace(/<@|!|>/g,"")], [args[1]], (err, result) => {
+            args[0].replace(/<@|!|>/g,""), args[1], (err, result) => {
                 done(err);
                 if (result.rowCount == 0){
                     client.query('insert into users (id, name, count) values ($1, $2, $3)',
-                    [args[0].replace(/<@|!|>/g,"")], [client.users.get(args[0].replace(/<@|!|>/g,"")).username], [args[1]] (err, result) => {
+                    args[0].replace(/<@|!|>/g,""), client.users.get(args[0].replace(/<@|!|>/g,"")).username, args[1] (err, result) => {
                         done(err);
                         console.log(result.rowCount);
                     });
