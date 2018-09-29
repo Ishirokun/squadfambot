@@ -123,7 +123,7 @@ bot.on("message", (message) => {
 	if (command === "award") {
 		var infos = {
 			targetuser: args[0].replace(/<@|!|>/g,""),
-			nametag: client.users.get(args[0].replace(/<@|!|>/g,"")).username,
+			nametag: bot.users.get(args[0].replace(/<@|!|>/g,"")).username,
 			amount: args[1]
 		}
 		 pool.connect( (err, client, done) => {
