@@ -102,7 +102,7 @@ bot.on("message", (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 	
-	if (command === 'o' || 'omegalul')
+	if (command === 'o')
 	{
 		database.connect( (err, client, done) => {
             client.query('select count from  users where id = $1',
@@ -117,18 +117,14 @@ bot.on("message", (message) => {
                 }
 
             });
-    })
+		})
 	}
 	
 	if (command === "award") {
-		var targetuser = args[0].replace(/<@|!|>/g,"")
-		var amount = args[1]
 		 pool.connect( (err, client, done) => {
             client.query('update users set count = count + $2 where id = $1',
-            [targetuser, amount], (err, result) => {
-
+            [args[0].replace(/<@|!|>/g,""), args[1]], (err, result) => {
                 done(err);
-                //If user not in the database add them
                 if (result.rowCount == 0){
                     client.query('insert into users (id, name, count) values ($1, $2, 1)',
                     [message.author.id, message.author.username], (err, result) => {
@@ -137,8 +133,8 @@ bot.on("message", (message) => {
                     });
                 }
             });
-	}
-});
+		 )}
+};
 
 
 bot.on('message', (message) => {
